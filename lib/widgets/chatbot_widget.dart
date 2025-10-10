@@ -79,7 +79,7 @@ class _ChatbotWidgetState extends State<ChatbotWidget> {
           _isOpen = !_isOpen;
         });
       },
-      backgroundColor: AppTheme.primary,
+      backgroundColor: primary,
       child: Icon(_isOpen ? Icons.close : Icons.chat, color: Colors.white),
     );
   }
@@ -95,9 +95,9 @@ class _ChatbotWidgetState extends State<ChatbotWidget> {
           width: 350,
           height: 500,
           decoration: BoxDecoration(
-            color: AppTheme.bgMedium,
+            color: bgMedium,
             borderRadius: BorderRadius.circular(16),
-            border: Border.all(color: AppTheme.primary.withOpacity(0.3)),
+            border: Border.all(color: primary.withOpacity(0.3)),
           ),
           child: Column(
             children: [
@@ -115,7 +115,7 @@ class _ChatbotWidgetState extends State<ChatbotWidget> {
     return Container(
       padding: const EdgeInsets.all(16),
       decoration: const BoxDecoration(
-        color: AppTheme.bgLight,
+        color: bgLight,
         borderRadius: BorderRadius.only(
           topLeft: Radius.circular(16),
           topRight: Radius.circular(16),
@@ -128,12 +128,12 @@ class _ChatbotWidgetState extends State<ChatbotWidget> {
             style: GoogleFonts.spaceGrotesk(
               fontSize: 18,
               fontWeight: FontWeight.w600,
-              color: AppTheme.primary,
+              color: primary,
             ),
           ),
           const Spacer(),
           IconButton(
-            icon: const Icon(Icons.close, color: AppTheme.textMuted),
+            icon: const Icon(Icons.close, color: textMuted),
             onPressed: () {
               setState(() {
                 _isOpen = false;
@@ -168,14 +168,14 @@ class _ChatbotWidgetState extends State<ChatbotWidget> {
           constraints: const BoxConstraints(maxWidth: 250),
           padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
           decoration: BoxDecoration(
-            color: message.isUser ? AppTheme.primary : AppTheme.bgLight,
+            color: message.isUser ? primary : bgLight,
             borderRadius: BorderRadius.circular(12),
           ),
           child: Text(
             message.message,
             style: GoogleFonts.inter(
               fontSize: 14,
-              color: message.isUser ? Colors.white : AppTheme.textLight,
+              color: message.isUser ? Colors.white : textLight,
             ),
           ),
         ),
@@ -191,7 +191,7 @@ class _ChatbotWidgetState extends State<ChatbotWidget> {
         child: Container(
           padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
           decoration: BoxDecoration(
-            color: AppTheme.bgLight,
+            color: bgLight,
             borderRadius: BorderRadius.circular(12),
           ),
           child: const Text('🧠 Thinking...'),
@@ -204,24 +204,24 @@ class _ChatbotWidgetState extends State<ChatbotWidget> {
     return Container(
       padding: const EdgeInsets.all(12),
       decoration: BoxDecoration(
-        color: AppTheme.bgDark,
-        border: Border(top: BorderSide(color: AppTheme.primary.withOpacity(0.2))),
+        color: bgDark,
+        border: Border(top: BorderSide(color: primary.withOpacity(0.2))),
       ),
       child: Row(
         children: [
           Expanded(
             child: TextField(
               controller: _controller,
-              style: const TextStyle(color: AppTheme.textLight),
+              style: const TextStyle(color: textLight),
               decoration: InputDecoration(
                 hintText: 'Ask me anything...',
-                hintStyle: const TextStyle(color: AppTheme.textMuted),
+                hintStyle: const TextStyle(color: textMuted),
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(8),
                   borderSide: BorderSide.none,
                 ),
                 filled: true,
-                fillColor: AppTheme.bgLight,
+                fillColor: bgLight,
                 contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
               ),
               onSubmitted: (_) => _sendMessage(),
@@ -231,7 +231,7 @@ class _ChatbotWidgetState extends State<ChatbotWidget> {
           Container(
             decoration: const BoxDecoration(
               gradient: LinearGradient(
-                colors: [AppTheme.primary, AppTheme.accent],
+                colors: [primary, accent],
               ),
               shape: BoxShape.circle,
             ),

@@ -38,9 +38,8 @@ dependencies:
   # State Management
   provider: ^6.1.1
   
-  # HTTP and WebSocket
+  # HTTP
   http: ^1.1.2
-  web_socket_channel: ^2.4.0
   
   # UI Components
   google_fonts: ^6.1.0

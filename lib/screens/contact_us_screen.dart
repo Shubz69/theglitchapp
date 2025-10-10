@@ -71,28 +71,27 @@ class _ContactUsScreenState extends State<ContactUsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Contact Us'),
-      ),
+      backgroundColor: bgDark,
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(20),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              'Get In Touch',
-              style: GoogleFonts.spaceGrotesk(
+              'CONTACT US',
+              style: GoogleFonts.orbitron(
                 fontSize: 32,
-                fontWeight: FontWeight.w900,
-                color: AppTheme.primary,
+                fontWeight: FontWeight.bold,
+                color: primary,
+                letterSpacing: 2,
               ),
             ),
             const SizedBox(height: 8),
             Text(
               'Got a question or proposal? Feel free to reach out.',
-              style: GoogleFonts.inter(
+              style: GoogleFonts.roboto(
                 fontSize: 16,
-                color: AppTheme.textMuted,
+                color: textSecondary,
               ),
             ),
             const SizedBox(height: 32),
@@ -104,10 +103,27 @@ class _ContactUsScreenState extends State<ContactUsScreen> {
                 children: [
                   TextFormField(
                     controller: _nameController,
-                    decoration: const InputDecoration(
+                    style: GoogleFonts.roboto(color: textPrimary),
+                    decoration: InputDecoration(
                       labelText: 'Full Name',
+                      labelStyle: GoogleFonts.roboto(color: textSecondary),
                       hintText: 'Your full name',
-                      prefixIcon: Icon(Icons.person, color: AppTheme.primary),
+                      hintStyle: GoogleFonts.roboto(color: textSecondary.withOpacity(0.6)),
+                      prefixIcon: const Icon(Icons.person, color: primary),
+                      filled: true,
+                      fillColor: bgMedium,
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(12),
+                        borderSide: BorderSide(color: primary.withOpacity(0.3)),
+                      ),
+                      enabledBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(12),
+                        borderSide: BorderSide(color: primary.withOpacity(0.3)),
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(12),
+                        borderSide: const BorderSide(color: primary, width: 2),
+                      ),
                     ),
                     validator: (value) {
                       if (value == null || value.isEmpty) {
@@ -120,10 +136,27 @@ class _ContactUsScreenState extends State<ContactUsScreen> {
                   
                   TextFormField(
                     controller: _emailController,
-                    decoration: const InputDecoration(
+                    style: GoogleFonts.roboto(color: textPrimary),
+                    decoration: InputDecoration(
                       labelText: 'Email Address',
+                      labelStyle: GoogleFonts.roboto(color: textSecondary),
                       hintText: 'Your email address',
-                      prefixIcon: Icon(Icons.email, color: AppTheme.primary),
+                      hintStyle: GoogleFonts.roboto(color: textSecondary.withOpacity(0.6)),
+                      prefixIcon: const Icon(Icons.email, color: primary),
+                      filled: true,
+                      fillColor: bgMedium,
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(12),
+                        borderSide: BorderSide(color: primary.withOpacity(0.3)),
+                      ),
+                      enabledBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(12),
+                        borderSide: BorderSide(color: primary.withOpacity(0.3)),
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(12),
+                        borderSide: const BorderSide(color: primary, width: 2),
+                      ),
                     ),
                     keyboardType: TextInputType.emailAddress,
                     validator: (value) {
@@ -140,11 +173,28 @@ class _ContactUsScreenState extends State<ContactUsScreen> {
                   
                   TextFormField(
                     controller: _messageController,
-                    decoration: const InputDecoration(
+                    style: GoogleFonts.roboto(color: textPrimary),
+                    decoration: InputDecoration(
                       labelText: 'Message',
+                      labelStyle: GoogleFonts.roboto(color: textSecondary),
                       hintText: 'How can we help you?',
-                      prefixIcon: Icon(Icons.message, color: AppTheme.primary),
+                      hintStyle: GoogleFonts.roboto(color: textSecondary.withOpacity(0.6)),
+                      prefixIcon: const Icon(Icons.message, color: primary),
                       alignLabelWithHint: true,
+                      filled: true,
+                      fillColor: bgMedium,
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(12),
+                        borderSide: BorderSide(color: primary.withOpacity(0.3)),
+                      ),
+                      enabledBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(12),
+                        borderSide: BorderSide(color: primary.withOpacity(0.3)),
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(12),
+                        borderSide: const BorderSide(color: primary, width: 2),
+                      ),
                     ),
                     maxLines: 5,
                     validator: (value) {
@@ -156,29 +206,55 @@ class _ContactUsScreenState extends State<ContactUsScreen> {
                   ),
                   const SizedBox(height: 32),
                   
-                  ElevatedButton(
-                    onPressed: _isSubmitting ? null : _submitForm,
-                    style: ElevatedButton.styleFrom(
-                      padding: const EdgeInsets.symmetric(vertical: 16),
-                      backgroundColor: AppTheme.primary,
+                  Container(
+                    width: double.infinity,
+                    height: 50,
+                    decoration: BoxDecoration(
+                      gradient: const LinearGradient(
+                        colors: [primary, accent],
+                      ),
+                      borderRadius: BorderRadius.circular(12),
+                      boxShadow: [
+                        BoxShadow(
+                          color: primary.withOpacity(0.3),
+                          blurRadius: 8,
+                          spreadRadius: 2,
+                        ),
+                      ],
                     ),
-                    child: _isSubmitting
-                        ? const SizedBox(
-                            width: 20,
-                            height: 20,
-                            child: CircularProgressIndicator(
-                              strokeWidth: 2,
-                              valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
-                            ),
-                          )
-                        : Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              const Text('Send Message'),
-                              const SizedBox(width: 8),
-                              const Icon(Icons.send, size: 18),
-                            ],
-                          ),
+                    child: Material(
+                      color: Colors.transparent,
+                      child: InkWell(
+                        onTap: _isSubmitting ? null : _submitForm,
+                        borderRadius: BorderRadius.circular(12),
+                        child: Center(
+                          child: _isSubmitting
+                              ? const SizedBox(
+                                  width: 20,
+                                  height: 20,
+                                  child: CircularProgressIndicator(
+                                    strokeWidth: 2,
+                                    color: Colors.white,
+                                  ),
+                                )
+                              : Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Text(
+                                      'Send Message',
+                                      style: GoogleFonts.roboto(
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.white,
+                                      ),
+                                    ),
+                                    const SizedBox(width: 8),
+                                    const Icon(Icons.send, size: 18, color: Colors.white),
+                                  ],
+                                ),
+                        ),
+                      ),
+                    ),
                   ),
                 ],
               ),
@@ -198,19 +274,26 @@ class _ContactUsScreenState extends State<ContactUsScreen> {
     return Container(
       padding: const EdgeInsets.all(24),
       decoration: BoxDecoration(
-        color: AppTheme.bgMedium,
-        borderRadius: BorderRadius.circular(16),
-        border: Border.all(color: AppTheme.primary.withOpacity(0.3)),
+        color: bgMedium,
+        borderRadius: BorderRadius.circular(20),
+        border: Border.all(color: primary.withOpacity(0.3)),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.1),
+            blurRadius: 10,
+            spreadRadius: 2,
+          ),
+        ],
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
             'Contact Information',
-            style: GoogleFonts.spaceGrotesk(
+            style: GoogleFonts.orbitron(
               fontSize: 20,
-              fontWeight: FontWeight.w600,
-              color: AppTheme.primary,
+              fontWeight: FontWeight.bold,
+              color: primary,
             ),
           ),
           const SizedBox(height: 20),
@@ -245,10 +328,10 @@ class _ContactUsScreenState extends State<ContactUsScreen> {
         Container(
           padding: const EdgeInsets.all(12),
           decoration: BoxDecoration(
-            color: AppTheme.primary.withOpacity(0.1),
-            borderRadius: BorderRadius.circular(8),
+            color: primary.withOpacity(0.1),
+            borderRadius: BorderRadius.circular(12),
           ),
-          child: Icon(icon, color: AppTheme.primary, size: 24),
+          child: Icon(icon, color: primary, size: 24),
         ),
         const SizedBox(width: 16),
         Expanded(
@@ -257,17 +340,17 @@ class _ContactUsScreenState extends State<ContactUsScreen> {
             children: [
               Text(
                 label,
-                style: GoogleFonts.inter(
+                style: GoogleFonts.roboto(
                   fontSize: 14,
                   fontWeight: FontWeight.w600,
-                  color: AppTheme.textMuted,
+                  color: textSecondary,
                 ),
               ),
               Text(
                 value,
-                style: GoogleFonts.inter(
+                style: GoogleFonts.roboto(
                   fontSize: 16,
-                  color: AppTheme.textLight,
+                  color: textPrimary,
                 ),
               ),
             ],

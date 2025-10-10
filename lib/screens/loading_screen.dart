@@ -44,7 +44,7 @@ class _LoadingScreenState extends State<LoadingScreen> with SingleTickerProvider
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppTheme.bgDark,
+      backgroundColor: bgDark,
       body: Stack(
         children: [
           // Binary background animation
@@ -65,7 +65,7 @@ class _LoadingScreenState extends State<LoadingScreen> with SingleTickerProvider
                   style: GoogleFonts.spaceGrotesk(
                     fontSize: 18,
                     fontWeight: FontWeight.w600,
-                    color: AppTheme.accent,
+                    color: accent,
                     letterSpacing: 2,
                   ),
                 ),
@@ -82,7 +82,7 @@ class _LoadingScreenState extends State<LoadingScreen> with SingleTickerProvider
                           'SYSTEM INITIALIZING... ${(_progressAnimation.value * 100).toInt()}%',
                           style: GoogleFonts.courierPrime(
                             fontSize: 14,
-                            color: AppTheme.primary,
+                            color: primary,
                           ),
                         ),
                         const SizedBox(height: 16),
@@ -90,7 +90,7 @@ class _LoadingScreenState extends State<LoadingScreen> with SingleTickerProvider
                           width: 300,
                           height: 4,
                           decoration: BoxDecoration(
-                            color: AppTheme.bgLight,
+                            color: bgLight,
                             borderRadius: BorderRadius.circular(2),
                           ),
                           child: FractionallySizedBox(
@@ -99,7 +99,7 @@ class _LoadingScreenState extends State<LoadingScreen> with SingleTickerProvider
                             child: Container(
                               decoration: BoxDecoration(
                                 gradient: const LinearGradient(
-                                  colors: [AppTheme.primary, AppTheme.accent],
+                                  colors: [primary, accent],
                                 ),
                                 borderRadius: BorderRadius.circular(2),
                               ),
@@ -133,7 +133,7 @@ class _LoadingScreenState extends State<LoadingScreen> with SingleTickerProvider
             foreground: Paint()
               ..style = PaintingStyle.stroke
               ..strokeWidth = 2
-              ..color = AppTheme.primary.withOpacity(0.5),
+              ..color = primary.withOpacity(0.5),
           ),
         ),
         Text(
@@ -141,7 +141,7 @@ class _LoadingScreenState extends State<LoadingScreen> with SingleTickerProvider
           style: GoogleFonts.spaceGrotesk(
             fontSize: 48,
             fontWeight: FontWeight.w900,
-            color: AppTheme.primary,
+            color: primary,
           ),
         ),
       ],
@@ -173,7 +173,7 @@ class _LoadingScreenState extends State<LoadingScreen> with SingleTickerProvider
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
                   border: Border.all(
-                    color: AppTheme.primary.withOpacity(opacity.clamp(0.0, 1.0)),
+                    color: primary.withOpacity(opacity.clamp(0.0, 1.0)),
                     width: 2,
                   ),
                 ),
@@ -190,7 +190,7 @@ class BinaryBackgroundPainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
     final paint = Paint()
-      ..color = AppTheme.primary.withOpacity(0.1)
+      ..color = primary.withOpacity(0.1)
       ..style = PaintingStyle.fill;
     
     final random = DateTime.now().millisecondsSinceEpoch;
@@ -203,7 +203,7 @@ class BinaryBackgroundPainter extends CustomPainter {
         text: TextSpan(
           text: i % 2 == 0 ? '1' : '0',
           style: TextStyle(
-            color: AppTheme.primary.withOpacity(0.1),
+            color: primary.withOpacity(0.1),
             fontSize: 20,
             fontFamily: 'Courier',
           ),

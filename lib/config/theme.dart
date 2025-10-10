@@ -1,19 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+// Colors matching website
+const Color primary = Color(0xFF6366F1); // Indigo
+const Color secondary = Color(0xFF8B5CF6); // Purple-Blue
+const Color accent = Color(0xFFA78BFA); // Light Purple
+const Color darkPurple = Color(0xFF4C1D95);
+
+const Color bgDark = Color(0xFF0F0F1E);
+const Color bgMedium = Color(0xFF1A1A2E);
+const Color bgLight = Color(0xFF252541);
+
+const Color textLight = Color(0xFFFFFFFF);
+const Color textMuted = Color(0xFFB0B0C0);
+const Color textPrimary = Color(0xFFFFFFFF);
+const Color textSecondary = Color(0xFFB0B0C0);
+
 class AppTheme {
-  // Colors matching website
-  static const Color primary = Color(0xFF6366F1); // Indigo
-  static const Color secondary = Color(0xFF8B5CF6); // Purple-Blue
-  static const Color accent = Color(0xFFA78BFA); // Light Purple
-  static const Color darkPurple = Color(0xFF4C1D95);
-  
-  static const Color bgDark = Color(0xFF0F0F1E);
-  static const Color bgMedium = Color(0xFF1A1A2E);
-  static const Color bgLight = Color(0xFF252541);
-  
-  static const Color textLight = Color(0xFFFFFFFF);
-  static const Color textMuted = Color(0xFFB0B0C0);
   
   static ThemeData get darkTheme {
     return ThemeData(
@@ -29,8 +32,8 @@ class AppTheme {
         background: bgDark,
       ),
       textTheme: GoogleFonts.spaceGroteskTextTheme().apply(
-        bodyColor: textLight,
-        displayColor: textLight,
+        bodyColor: textPrimary,
+        displayColor: textPrimary,
       ),
       appBarTheme: AppBarTheme(
         backgroundColor: bgMedium,

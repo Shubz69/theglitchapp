@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'config/theme.dart';
 import 'screens/loading_screen.dart';
 import 'screens/main_screen.dart';
+import 'screens/login_screen.dart';
+import 'screens/register_screen.dart';
+import 'screens/forgot_password_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -20,6 +23,9 @@ class MyApp extends StatelessWidget {
       routes: {
         '/': (context) => const LoadingScreen(),
         '/main': (context) => const MainScreen(),
+        '/login': (context) => const LoginScreen(),
+        '/register': (context) => const RegisterScreen(),
+        '/forgot-password': (context) => const ForgotPasswordScreen(),
       },
     );
   }

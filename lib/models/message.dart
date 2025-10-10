@@ -6,6 +6,9 @@ class Message {
   final DateTime timestamp;
   final int senderLevel;
   final String? senderAvatar;
+  final String userId;
+  final String username;
+  final bool isSystem;
 
   Message({
     required this.id,
@@ -15,6 +18,9 @@ class Message {
     required this.timestamp,
     this.senderLevel = 1,
     this.senderAvatar,
+    required this.userId,
+    required this.username,
+    this.isSystem = false,
   });
 
   factory Message.fromJson(Map<String, dynamic> json) {
@@ -28,6 +34,9 @@ class Message {
           : DateTime.now(),
       senderLevel: json['senderLevel'] ?? 1,
       senderAvatar: json['senderAvatar'],
+      userId: json['userId']?.toString() ?? json['senderId']?.toString() ?? '',
+      username: json['username'] ?? json['senderUsername'] ?? 'Unknown',
+      isSystem: json['isSystem'] ?? false,
     );
   }
 
@@ -40,6 +49,9 @@ class Message {
       'timestamp': timestamp.millisecondsSinceEpoch,
       'senderLevel': senderLevel,
       'senderAvatar': senderAvatar,
+      'userId': userId,
+      'username': username,
+      'isSystem': isSystem,
     };
   }
 }

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test Contact Form</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; background: #1a1a1a; color: white; }
+        .form { background: #2a2a2a; padding: 20px; border-radius: 10px; max-width: 500px; }
+        input, textarea { width: 100%; padding: 10px; margin: 10px 0; border: 1px solid #8B5CF6; background: #333; color: white; border-radius: 5px; }
+        button { background: #8B5CF6; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; }
+        .result { margin-top: 20px; padding: 10px; border-radius: 5px; }
+        .success { background: #10B981; }
+        .error { background: #EF4444; }
+    </style>
+</head>
+<body>
+    <h1>Test Contact Form</h1>
+    <div class="form">
+        <input type="text" id="name" placeholder="Full Name" value="Test User">
+        <input type="email" id="email" placeholder="Email" value="test@example.com">
+        <textarea id="message" placeholder="Message" rows="4">This is a test message from the contact form.</textarea>
+        <button onclick="sendMessage()">Send Message</button>
+    </div>
+    <div id="result"></div>
+
+    <script>
+        async function sendMessage() {
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+            
+            const resultDiv = document.getElementById('result');
+            resultDiv.innerHTML = 'Sending...';
+            resultDiv.className = 'result';
+            
+            try {
+                const response = await fetch('http://localhost:8080/api/contact', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        name: name,
+                        email: email,
+                        message: message
+                    })
+                });
+                
+                if (response.ok) {
+                    resultDiv.innerHTML = '✅ Message sent successfully! Check platform@theglitch.online';
+                    resultDiv.className = 'result success';
+                } else {
+                    resultDiv.innerHTML = '❌ Error: ' + response.status + ' - ' + await response.text();
+                    resultDiv.className = 'result error';
+                }
+            } catch (error) {
+                resultDiv.innerHTML = '❌ Error: ' + error.message;
+                resultDiv.className = 'result error';
+            }
+        }
+    </script>
+</body>
+</html>
